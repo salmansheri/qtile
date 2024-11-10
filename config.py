@@ -417,13 +417,13 @@ keys = [
     # Switch between column layout and max layout  
     # Column layout
     Key([mod], "e", lazy.group.setlayout("max"), desc="set layout to max"),
-    Key([mod], "w", lazy.group.setlayout("columns"), desc="set layout to column"),
+    # Key([mod], "w", lazy.group.setlayout("columns"), desc="set layout to column"),
     Key([mod], "t", lazy.group.setlayout("treetab"), desc="set layout to treetab"),
-    Key([mod], "b", lazy.group.setlayout("bsp"), desc="set layout to bsp"),
+    Key([mod], "w", lazy.group.setlayout("bsp"), desc="set layout to bsp"),
 
     # Swap windows
-    Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Swap the window to left in tile layout"),
-    Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="swap the window to right in tile layout"),    
+    # Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Swap the window to left in tile layout"),
+    # Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="swap the window to right in tile layout"),    
 
 
     # Modes: Resize
@@ -879,12 +879,8 @@ screens = [
                 # widget.Systray(),
                 CurrentLayoutIcon(
         **decor_left,
-<<<<<<< HEAD
-        background=Color1+".4",
-=======
         # background=Color1+".4",
-        background=Color1,
->>>>>>> 6b3bf71 (Transparant bar bg)
+        background=Color1+".4",
         foreground='ffffff',
         padding=10,
     ),
@@ -904,12 +900,7 @@ screens = [
     widget.WindowName(
         **decor_left,
         max_chars=50,
-<<<<<<< HEAD
         background=Color2+".4",
-=======
-        # background=Color2+".4",
-        background=Color2,
->>>>>>> 6b3bf71 (Transparant bar bg)
         width=400,
         padding=10
     ),
@@ -919,44 +910,27 @@ screens = [
     ),
     widget.TextBox(
         **decor_right,
-<<<<<<< HEAD
         background="#000000.3"      
     ),    
     widget.Memory(
         **decor_right,
         background=Color10+".4",
-=======
-        # background="#000000.3"      
-    ),    
-    widget.Memory(
-        **decor_right,
-        # background=Color10+".4",
-        background=Color10,
->>>>>>> 6b3bf71 (Transparant bar bg)
+        # background=Color10,
         padding=10,        
         measure_mem='G',
         format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
     ),
     widget.Volume(
         **decor_right,
-<<<<<<< HEAD
         background=Color12+".4",
-=======
-        # background=Color12+".4",
-        background=Color12,
->>>>>>> 6b3bf71 (Transparant bar bg)
+        # background=Color12,
         padding=10, 
         fmt='Vol: {}',
     ),
     widget.DF(
         **decor_right,
         padding=10, 
-<<<<<<< HEAD
         background=Color8+".4",        
-=======
-        # background=Color8+".4",        
-        background=Color8,        
->>>>>>> 6b3bf71 (Transparant bar bg)
         visible_on_warn=False,
         format="{p} {uf}{m} ({r:.0f}%)"
     ),
@@ -968,12 +942,7 @@ screens = [
     # ),
     widget.Clock(
         **decor_right,
-<<<<<<< HEAD
         background=Color4+".4",   
-=======
-         # background=Color4+".4",   
-        background=Color4,   
->>>>>>> 6b3bf71 (Transparant bar bg)
         padding=10,      
         format="%Y-%m-%d / %I:%M %p",
     ),
@@ -981,12 +950,9 @@ screens = [
             ],
             24,
             # background="#00000000",
-<<<<<<< HEAD
             background=colordict["special"]["background"],
-=======
             #  background=colordict["special"]["background"],
-            background='#00000000',
->>>>>>> 6b3bf71 (Transparant bar bg)
+            #  background='#00000000',
             margin=[5, 0, 0, 0],
             opacity=1.0,
             border_width=[0, 0, 2, 0],

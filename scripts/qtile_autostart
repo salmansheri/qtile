@@ -38,11 +38,8 @@ xsetroot -cursor_name left_ptr
 
 # Restore wallpaper
 # hsetroot -cover "$qdir"/theme/wallpaper
-<<<<<<< HEAD
-wal -i ~/wallpapers/orange.jpg
-=======
+# wal -i ~/wallpapers/orange.jpg
 wal -i ~/wallpapers/scene-pink.png
->>>>>>> 6b3bf71 (Transparant bar bg)
 
 # Lauch notification daemon
 "$qdir"/scripts/qtile_dunst
