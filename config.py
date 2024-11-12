@@ -18,18 +18,11 @@ from libqtile import layout
 
 ## Screens
 from libqtile.config import Screen
-from libqtile import bar,qtile
+from libqtile import bar
 from libqtile.widget import CurrentLayoutIcon
 from qtile_extras import widget
-from qtile_extras.widget.decorations import RectDecoration
+
 from qtile_extras.widget.decorations import PowerLineDecoration
-
-## ScratchPad and DropDown
-from libqtile.config import ScratchPad, DropDown
-
-## Spotify
-#from spotify import Spotify
-
 
 ## Startup
 import os
