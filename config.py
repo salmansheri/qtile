@@ -905,14 +905,14 @@ screens = [
         **decor_right,
         background="#000000.3"      
     ),    
-    widget.Memory(
-        **decor_right,
-        background=Color10+".4",
-        # background=Color10,
-        padding=10,        
-        measure_mem='G',
-        format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
-    ),
+    # widget.Memory(
+    #     **decor_right,
+    #     background=Color10+".4",
+    #     # background=Color10,
+    #     padding=10,        
+    #     measure_mem='G',
+    #     format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
+    # ),
     widget.Volume(
         **decor_right,
         background=Color12+".4",
@@ -920,19 +920,19 @@ screens = [
         padding=10, 
         fmt='Vol: {}',
     ),
-    widget.DF(
-        **decor_right,
-        padding=10, 
-        background=Color8+".4",        
-        visible_on_warn=False,
-        format="{p} {uf}{m} ({r:.0f}%)"
-    ),
-    # widget.Bluetooth(
+    # widget.DF(
     #     **decor_right,
-    #     background=Color2+".4",
-    #     padding=10,
-    #     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("blueman-manager")},
+    #     padding=10, 
+    #     background=Color8+".4",        
+    #     visible_on_warn=False,
+    #     format="{p} {uf}{m} ({r:.0f}%)"
     # ),
+     widget.Net(
+        **decor_right, 
+        padding=10, 
+        background=Color5+".4",
+        format=" {total} {total_suffix}"
+     ),
     widget.Clock(
         **decor_right,
         background=Color4+".4",   
