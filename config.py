@@ -1,5 +1,3 @@
-##
-
 ## Import Libraries ------------------------
 import json
 
@@ -14,7 +12,7 @@ from libqtile.config import Click, Drag
 from libqtile.config import Group, Match, Rule
 
 ## Layouts
-from libqtile import layout
+from libqtile import layout, qtile
 
 ## Screens
 from libqtile.config import Screen
@@ -905,14 +903,14 @@ screens = [
         **decor_right,
         background="#000000.3"      
     ),    
-    # widget.Memory(
-    #     **decor_right,
-    #     background=Color10+".4",
-    #     # background=Color10,
-    #     padding=10,        
-    #     measure_mem='G',
-    #     format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
-    # ),
+    widget.Memory(
+        **decor_right,
+        background=Color10+".4",
+        # background=Color10,
+        padding=10,        
+        measure_mem='G',
+        format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
+    ),
     widget.Volume(
         **decor_right,
         background=Color12+".4",
@@ -920,19 +918,27 @@ screens = [
         padding=10, 
         fmt='Vol: {}',
     ),
-    # widget.DF(
-    #     **decor_right,
-    #     padding=10, 
-    #     background=Color8+".4",        
-    #     visible_on_warn=False,
-    #     format="{p} {uf}{m} ({r:.0f}%)"
-    # ),
-     widget.Net(
-        **decor_right, 
+    # widget.CheckUpdates(
+    #                 **decor_right, 
+    #                 distro='Arch_checkupdates',
+    #                 background=Color3+".4",
+    #                 foreground=catppuccin["black"],
+    #                 update_interval=1800,
+    #                 mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')}
+                ),
+    widget.DF(
+        **decor_right,
         padding=10, 
-        background=Color5+".4",
-        format=" {total} {total_suffix}"
-     ),
+        background=Color8+".4",        
+        visible_on_warn=False,
+        format="{p} {uf}{m} ({r:.0f}%)"
+    ),
+     # widget.Net(
+     #    **decor_right, 
+     #    padding=10, 
+     #    background=Color5+".4",
+     #    format=" {total} {total_suffix}"
+     # ),
     widget.Clock(
         **decor_right,
         background=Color4+".4",   
