@@ -925,7 +925,7 @@ screens = [
     #                 foreground=catppuccin["black"],
     #                 update_interval=1800,
     #                 mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')}
-                ),
+                # ),
     widget.DF(
         **decor_right,
         padding=10, 

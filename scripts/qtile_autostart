@@ -39,7 +39,7 @@ xsetroot -cursor_name left_ptr
 # Restore wallpaper
 # hsetroot -cover "$qdir"/theme/wallpaper
 # wal -i ~/wallpapers/orange.jpg
-wal -i ~/wallpapers/scene-pink.png
+wal -i ~/wallpapers/wallpaper/deer_in_pine_forest.jpg
 
 # Lauch notification daemon
 "$qdir"/scripts/qtile_dunst
