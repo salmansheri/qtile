@@ -413,8 +413,10 @@ keys = [
     Key([mod], "w", lazy.group.setlayout("bsp"), desc="set layout to bsp"),
 
     # Swap windows
-    # Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Swap the window to left in tile layout"),
-    # Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="swap the window to right in tile layout"),    
+    Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Swap the window to left in tile layout"),
+    Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="swap the window to right in tile layout"),    
+
+    Key([mod, "shift"], "s", lazy.layout.flip()),
 
 
     # Modes: Resize
