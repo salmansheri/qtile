@@ -170,8 +170,8 @@ keys = [
     ),
     # Rofi Applets --
     Key(
-        ["mod1"],
-        "F1",
+        [mod],
+        "r",
         lazy.spawn(rofi_applets + "rofi_launcher"),
         desc="Run application launcher",
    ),
@@ -199,7 +199,7 @@ keys = [
         lazy.spawn(rofi_applets + "rofi_music"),
         desc="Run music player applet",
     ),
-    Key([mod], "r", lazy.spawn(rofi_applets + "rofi_asroot"), desc="Run asroot applet"),
+    # Key([mod], "r", lazy.spawn(rofi_applets + "rofi_asroot"), desc="Run asroot applet"),
     Key(
         [mod],
         "s",
@@ -911,7 +911,10 @@ screens = [
         # background=Color10,
         padding=10,        
         measure_mem='G',
-        format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})"
+        format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})", 
+        mouse_callbacks={
+                       "Button1": lambda: qtile.cmd_spawn("kitty" + " -e bashtop")
+                     },
     ),
     widget.Volume(
         **decor_right,
@@ -919,6 +922,9 @@ screens = [
         # background=Color12,
         padding=10, 
         fmt='Vol: {}',
+        mouse_callbacks={
+                       "Button1": lambda: qtile.cmd_spawn("kitty" + " -e pulsemixer")
+                     },
     ),
     # widget.CheckUpdates(
     #                 **decor_right, 
@@ -933,7 +939,10 @@ screens = [
         padding=10, 
         background=Color8+".4",        
         visible_on_warn=False,
-        format="{p} {uf}{m} ({r:.0f}%)"
+        format="{p} {uf}{m} ({r:.0f}%)", 
+         mouse_callbacks={
+                 "Button1": lambda: qtile.cmd_spawn("kitty" + " -e clean")
+                     },
     ),
      # widget.Net(
      #    **decor_right, 
