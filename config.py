@@ -922,9 +922,6 @@ screens = [
         # background=Color12,
         padding=10, 
         fmt='Vol: {}',
-        mouse_callbacks={
-                       "Button1": lambda: qtile.cmd_spawn("kitty" + " -e pulsemixer")
-                     },
     ),
     # widget.CheckUpdates(
     #                 **decor_right, 
