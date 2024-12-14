@@ -870,7 +870,7 @@ screens = [
                 #     length=10,
                 # ),
                 # widget.Systray(),
-                CurrentLayoutIcon(
+    CurrentLayoutIcon(
         **decor_left,
         # background=Color1+".4",
         background=Color1+".4",
@@ -952,6 +952,9 @@ screens = [
         background=Color4+".4",   
         padding=10,      
         format="%Y-%m-%d / %I:%M %p",
+        mouse_callbacks={
+                       "Button1": lambda: qtile.cmd_spawn("kitty" + " -e calcurse")
+                     },
     ),
      widget.Systray(),
             ],
@@ -960,7 +963,7 @@ screens = [
             background=colordict["special"]["background"],
             #  background=colordict["special"]["background"],
             #  background='#00000000',
-            margin=[5, 0, 0, 0],
+            margin=[0, 0, 0, 0],
             opacity=1.0,
             border_width=[0, 0, 2, 0],
         ),
