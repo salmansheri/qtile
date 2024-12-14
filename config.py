@@ -1,51 +1,41 @@
 ## Import Libraries ------------------------
 import json
-
-## Keys
-from libqtile.config import Key, KeyChord
-from libqtile.lazy import lazy
-
-## Mouse
-from libqtile.config import Click, Drag
-
-## Groups
-from libqtile.config import Group, Match, Rule
-
-## Layouts
-from libqtile import layout, qtile
-
-## Screens
-from libqtile.config import Screen
-from libqtile import bar
-from libqtile.widget import CurrentLayoutIcon
-from qtile_extras import widget
-
-from qtile_extras.widget.decorations import PowerLineDecoration
-
 ## Startup
 import os
 import subprocess
-from libqtile import hook
+
+## Layouts
+from libqtile import bar, hook, layout, qtile
+## Screens
+## Groups
+## Mouse
+## Keys
+from libqtile.config import (Click, Drag, Group, Key, KeyChord, Match, Rule,
+                             Screen)
+from libqtile.lazy import lazy
+from libqtile.widget import CurrentLayoutIcon
+from qtile_extras import widget
+from qtile_extras.widget.decorations import PowerLineDecoration
 
 ## pywal colors
 colors = os.path.expanduser("~/.cache/wal/colors.json")
 colordict = json.load(open(colors))
-Color0=(colordict['colors']['color0'])
-Color1=(colordict['colors']['color1'])
-Color2=(colordict['colors']['color2'])
-Color3=(colordict['colors']['color3'])
-Color4=(colordict['colors']['color4'])
-Color5=(colordict['colors']['color5'])
-Color6=(colordict['colors']['color6'])
-Color7=(colordict['colors']['color7'])
-Color8=(colordict['colors']['color8'])
-Color9=(colordict['colors']['color9'])
-Color10=(colordict['colors']['color10'])
-Color11=(colordict['colors']['color11'])
-Color12=(colordict['colors']['color12'])
-Color13=(colordict['colors']['color13'])
-Color14=(colordict['colors']['color14'])
-Color15=(colordict['colors']['color15'])
+Color0 = colordict["colors"]["color0"]
+Color1 = colordict["colors"]["color1"]
+Color2 = colordict["colors"]["color2"]
+Color3 = colordict["colors"]["color3"]
+Color4 = colordict["colors"]["color4"]
+Color5 = colordict["colors"]["color5"]
+Color6 = colordict["colors"]["color6"]
+Color7 = colordict["colors"]["color7"]
+Color8 = colordict["colors"]["color8"]
+Color9 = colordict["colors"]["color9"]
+Color10 = colordict["colors"]["color10"]
+Color11 = colordict["colors"]["color11"]
+Color12 = colordict["colors"]["color12"]
+Color13 = colordict["colors"]["color13"]
+Color14 = colordict["colors"]["color14"]
+Color15 = colordict["colors"]["color15"]
 
 ## Colors
 catppuccin = {
@@ -65,7 +55,7 @@ catppuccin = {
     "black": "#1a1826",
 }
 
-# Decorations 
+# Decorations
 decor_left = {
     "decorations": [
         PowerLineDecoration(
@@ -174,7 +164,7 @@ keys = [
         "r",
         lazy.spawn(rofi_applets + "rofi_launcher"),
         desc="Run application launcher",
-   ),
+    ),
     Key(
         ["mod1"],
         "F2",
@@ -403,22 +393,32 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     # Toggle minimize and maximize
-    Key([mod, "shift"],"m", lazy.window.toggle_minimize(), desc="Toggle between minimize and maximize" ), 
-
-    # Switch between column layout and max layout  
+    Key(
+        [mod, "shift"],
+        "m",
+        lazy.window.toggle_minimize(),
+        desc="Toggle between minimize and maximize",
+    ),
+    # Switch between column layout and max layout
     # Column layout
     Key([mod], "e", lazy.group.setlayout("max"), desc="set layout to max"),
     # Key([mod], "w", lazy.group.setlayout("columns"), desc="set layout to column"),
     Key([mod], "t", lazy.group.setlayout("treetab"), desc="set layout to treetab"),
     Key([mod], "w", lazy.group.setlayout("bsp"), desc="set layout to bsp"),
-
     # Swap windows
-    Key([mod, "shift"], "h", lazy.layout.swap_left(), desc="Swap the window to left in tile layout"),
-    Key([mod, "shift"], "l", lazy.layout.swap_right(), desc="swap the window to right in tile layout"),    
-
+    Key(
+        [mod, "shift"],
+        "h",
+        lazy.layout.swap_left(),
+        desc="Swap the window to left in tile layout",
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.swap_right(),
+        desc="swap the window to right in tile layout",
+    ),
     Key([mod, "shift"], "s", lazy.layout.flip()),
-
-
     # Modes: Resize
     KeyChord(
         [mod, "shift"],
@@ -426,7 +426,7 @@ keys = [
         [
             Key([], "Left", lazy.layout.grow_left()),
             Key([], "Right", lazy.layout.grow_right()),
-            Key([], "Down", lazy.layout.grow_down()), 
+            Key([], "Down", lazy.layout.grow_down()),
             Key([], "Up", lazy.layout.grow_up()),
         ],
         mode=True,
@@ -462,8 +462,6 @@ mouse = [
 groups = [Group(i) for i in "12345678"]
 
 
-
-
 for i in groups:
     keys.extend(
         [
@@ -481,7 +479,6 @@ for i in groups:
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
-                
         ]
     )
 
@@ -555,11 +552,8 @@ layouts = [
     # Emulate the behavior of XMonad's default tiling scheme.
     layout.MonadTall(
         border_focus=var_active_color,
-
         margin=var_margin,
-    ),   
-    
-    
+    ),
     # Emulate the behavior of XMonad's ThreeColumns layout.
     layout.MonadThreeCol(
         align=0,
@@ -870,93 +864,86 @@ screens = [
                 #     length=10,
                 # ),
                 # widget.Systray(),
-    CurrentLayoutIcon(
-        **decor_left,
-        # background=Color1+".4",
-        background=Color1+".4",
-        foreground='ffffff',
-        padding=10,
-    ),
-    widget.GroupBox(
-        **decor_left,
-        background="#ffffff.7",
-        highlight_method='line',
-        highlight_color=[catppuccin["mauve"], catppuccin["mauve"]],
-       # highlight_color=colors["special"]['foreground'],
-        foreground=catppuccin["black"],
-        rounded=False,
-        inactive=catppuccin["gray"],
-        active=catppuccin["black"]
-    ),
-
-    
-    widget.WindowName(
-        **decor_left,
-        max_chars=50,
-        background=Color2+".4",
-        width=400,
-        padding=10
-    ),
-    widget.Spacer(),
-    widget.Spacer(
-        length=30
-    ),
-    widget.TextBox(
-        **decor_right,
-        background="#000000.3"      
-    ),    
-    widget.Memory(
-        **decor_right,
-        background=Color10+".4",
-        # background=Color10,
-        padding=10,        
-        measure_mem='G',
-        format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})", 
-        mouse_callbacks={
-                       "Button1": lambda: qtile.cmd_spawn("kitty" + " -e bashtop")
-                     },
-    ),
-    widget.Volume(
-        **decor_right,
-        background=Color12+".4",
-        # background=Color12,
-        padding=10, 
-        fmt='Vol: {}',
-    ),
-    # widget.CheckUpdates(
-    #                 **decor_right, 
-    #                 distro='Arch_checkupdates',
-    #                 background=Color3+".4",
-    #                 foreground=catppuccin["black"],
-    #                 update_interval=1800,
-    #                 mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')}
+                CurrentLayoutIcon(
+                    **decor_left,
+                    # background=Color1+".4",
+                    background=Color1 + ".4",
+                    foreground="ffffff",
+                    padding=10,
+                ),
+                widget.GroupBox(
+                    **decor_left,
+                    background="#ffffff.7",
+                    highlight_method="line",
+                    highlight_color=[catppuccin["mauve"], catppuccin["mauve"]],
+                    # highlight_color=colors["special"]['foreground'],
+                    foreground=catppuccin["black"],
+                    rounded=False,
+                    inactive=catppuccin["gray"],
+                    active=catppuccin["black"],
+                ),
+                widget.WindowName(
+                    **decor_left,
+                    max_chars=50,
+                    background=Color2 + ".4",
+                    width=400,
+                    padding=10,
+                ),
+                widget.Spacer(),
+                widget.Spacer(length=30),
+                widget.TextBox(**decor_right, background="#000000.3"),
+                widget.Memory(
+                    **decor_right,
+                    background=Color10 + ".4",
+                    # background=Color10,
+                    padding=10,
+                    measure_mem="G",
+                    format="{MemUsed:.0f}{mm} ({MemTotal:.0f}{mm})",
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn("kitty" + " -e bashtop")
+                    },
+                ),
+                widget.Volume(
+                    **decor_right,
+                    background=Color12 + ".4",
+                    # background=Color12,
+                    padding=10,
+                    fmt="Vol: {}",
+                ),
+                # widget.CheckUpdates(
+                #                 **decor_right,
+                #                 distro='Arch_checkupdates',
+                #                 background=Color3+".4",
+                #                 foreground=catppuccin["black"],
+                #                 update_interval=1800,
+                #                 mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(terminal + ' -e sudo pacman -Syu')}
                 # ),
-    widget.DF(
-        **decor_right,
-        padding=10, 
-        background=Color8+".4",        
-        visible_on_warn=False,
-        format="{p} {uf}{m} ({r:.0f}%)", 
-         mouse_callbacks={
-                 "Button1": lambda: qtile.cmd_spawn("kitty" + " -e clean")
-                     },
-    ),
-     # widget.Net(
-     #    **decor_right, 
-     #    padding=10, 
-     #    background=Color5+".4",
-     #    format=" {total} {total_suffix}"
-     # ),
-    widget.Clock(
-        **decor_right,
-        background=Color4+".4",   
-        padding=10,      
-        format="%Y-%m-%d / %I:%M %p",
-        mouse_callbacks={
-                       "Button1": lambda: qtile.cmd_spawn("kitty" + " -e calcurse")
-                     },
-    ),
-     widget.Systray(),
+                widget.DF(
+                    **decor_right,
+                    padding=10,
+                    background=Color8 + ".4",
+                    visible_on_warn=False,
+                    format="{p} {uf}{m} ({r:.0f}%)",
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn("kitty" + " -e clean")
+                    },
+                ),
+                # widget.Net(
+                #    **decor_right,
+                #    padding=10,
+                #    background=Color5+".4",
+                #    format=" {total} {total_suffix}"
+                # ),
+                widget.Clock(
+                    **decor_right,
+                    background=Color4 + ".4",
+                    padding=10,
+                    format="%Y-%m-%d / %I:%M %p",
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn("kitty" + " -e calcurse")
+                    },
+                ),
+                widget.Systray(),
             ],
             24,
             # background="#00000000",
@@ -1002,9 +989,7 @@ cursor_warp = False
 dgroups_key_binder = None
 
 # A list of Rule objects which can send windows to various groups based on matching criteria.
-dgroups_app_rules = [
-    Rule(Match(wm_class="thunar"), group="3"),
-]  # type: list
+dgroups_app_rules: list[Rule] = []  # type: list
 
 # The default floating layout to use. This allows you to set custom floating rules among other things if you wish.
 floating_layout = layout.Floating(
